@@ -52,3 +52,12 @@ button:hover{
 a{
     color:inherit;
 }
+#clear{
+    background-color: tomato;
+}
+#multiply,#plus,#minus,#divide{
+    background-color: khaki;
+}
+#equal,#back{
+    background-color: darkturquoise;
+}
