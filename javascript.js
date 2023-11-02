@@ -44,12 +44,17 @@ back.addEventListener('click',()=>{
 });
 
 clear.addEventListener('click',()=>{
+    cl();
+});
+
+function cl()
+{
     display.textContent="";
     isClicked= true;
     first=undefined;
     last=undefined;
     oper=undefined;
-});
+}
 
 var first;
 var last;
@@ -92,15 +97,30 @@ op.forEach((e)=>{
             }
             if(last !== undefined)
             {
-                display.textContent=operate(first,last,oper);
-                first=display.textContent;
-                display.textContent += e.textContent;
-                oper=display.textContent.slice(first.length,first.length+1);
-                last=undefined;
+                if(oper === '/' && last === '0')
+                {
+                    alert(`Can't divide by zero`);
+                    cl();
+                }
+                else
+                {
+                    display.textContent=operate(first,last,oper);
+                    first=display.textContent;
+                    display.textContent += e.textContent;
+                    oper=display.textContent.slice(first.length,first.length+1);
+                    last=undefined;
+                }
             }
         });
 });
 equal.addEventListener('click',()=>{
     display.textContent=operate(first,last,oper);
     isClicked=!isClicked;
+    if(oper === '/' && last === '0')
+        {
+            alert(`Can't divide by zero`);
+            cl();
+        }
 });
+
+//console.log(first,oper,last);
