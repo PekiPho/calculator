@@ -83,7 +83,6 @@ op.forEach((e)=>{
                 display.textContent += e.textContent;
                 oper=display.textContent.slice(first.length,first.length+1);
                 last=undefined;
-                console.log(first,oper,last);
             }
         });
 });
