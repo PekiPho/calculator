@@ -35,7 +35,6 @@ buttons.forEach((e)=>{
 back.addEventListener('click',()=>{
     let t=display.textContent.slice(display.textContent.length-1,display.textContent.length);
     display.textContent=display.textContent.slice(0,-1);
-    console.log(t);
     if(t === '*' || t === '/' || t === '-' || t === '+')
     {
         oper=undefined;
@@ -65,15 +64,21 @@ function operate(a,b,operator)
     switch(operator)
     {
         case '+':
-            return a+b;
+            return round(a+b);
         case '-':
-            return a-b;
+            return round(a-b);
         case '*':
-            return a*b;
+            return round(a*b);
         case '/':
-            return a/b;
+            return round(a/b);
     }
 }
+
+function round(num)
+{
+    return Math.round(num*1000)/1000;
+}
+
 op.forEach((e)=>{
     
         e.addEventListener('click',()=>{
@@ -83,6 +88,7 @@ op.forEach((e)=>{
             first=display.textContent.slice(0,-1);
             isClicked=!isClicked;
             oper=display.textContent.slice(first.length,first.length+1);
+            last=undefined;
             }
             if(last !== undefined)
             {
