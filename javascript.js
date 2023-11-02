@@ -33,7 +33,15 @@ buttons.forEach((e)=>{
     });
 });
 back.addEventListener('click',()=>{
+    let t=display.textContent.slice(display.textContent.length-1,display.textContent.length);
     display.textContent=display.textContent.slice(0,-1);
+    console.log(t);
+    if(t === '*' || t === '/' || t === '-' || t === '+')
+    {
+        oper=undefined;
+        last=undefined;
+        isClicked=true;
+    }
 });
 
 clear.addEventListener('click',()=>{
