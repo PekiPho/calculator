@@ -38,7 +38,26 @@ clear.addEventListener('click',()=>{
 
 var first;
 var last;
+var oper;
 var isClicked= true;
+
+function operate(a,b,operator)
+
+{
+    a=Number(a);
+    b=Number(b);
+    switch(operator)
+    {
+        case '+':
+            return a+b;
+        case '-':
+            return a-b;
+        case '*':
+            return a*b;
+        case '/':
+            return a/b;
+    }
+}
 op.forEach((e)=>{
     
         e.addEventListener('click',()=>{
@@ -49,4 +68,10 @@ op.forEach((e)=>{
             isClicked=!isClicked;
             }
         });
+});
+equal.addEventListener('click',()=>{
+    last=display.textContent.slice(first.length+1,display.textContent.length);
+    oper=display.textContent.slice(first.length,first.length+1);
+    display.textContent=operate(first,last,oper);
+    isClicked=!isClicked;
 });
