@@ -30,3 +30,7 @@ buttons.forEach((e)=>{
 back.addEventListener('click',()=>{
     display.textContent=display.textContent.slice(0,-1);
 });
+
+clear.addEventListener('click',()=>{
+    display.textContent="";
+})
