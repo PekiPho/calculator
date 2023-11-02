@@ -23,6 +23,11 @@ body{
     height: 8vh;
     border: 2px solid black;
     border-radius: 10px;
+    padding-right: 20px;
+    font-size:2em;
+    display:flex;
+    justify-content: right;
+    align-items: center;
 }
 .display,.row2,.row3,.row4,.row5,.row6{
     margin: 20px 15px;

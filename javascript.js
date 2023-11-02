@@ -26,5 +26,7 @@ buttons.forEach((e)=>{
     e.addEventListener('click',()=>{
         display.textContent += e.textContent;
     });
-    
+});
+back.addEventListener('click',()=>{
+    display.textContent=display.textContent.slice(0,-1);
 });
