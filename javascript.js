@@ -26,6 +26,10 @@ const op=document.querySelectorAll('.op');
 buttons.forEach((e)=>{
     e.addEventListener('click',()=>{
         display.textContent += e.textContent;
+        if(oper !== undefined)
+        {
+            last=display.textContent.slice(first.length+1,display.textContent.length);
+        }
     });
 });
 back.addEventListener('click',()=>{
@@ -34,6 +38,10 @@ back.addEventListener('click',()=>{
 
 clear.addEventListener('click',()=>{
     display.textContent="";
+    isClicked= true;
+    first=undefined;
+    last=undefined;
+    oper=undefined;
 });
 
 var first;
@@ -66,12 +74,20 @@ op.forEach((e)=>{
             display.textContent += e.textContent;
             first=display.textContent.slice(0,-1);
             isClicked=!isClicked;
+            oper=display.textContent.slice(first.length,first.length+1);
+            }
+            if(last !== undefined)
+            {
+                display.textContent=operate(first,last,oper);
+                first=display.textContent;
+                display.textContent += e.textContent;
+                oper=display.textContent.slice(first.length,first.length+1);
+                last=undefined;
+                console.log(first,oper,last);
             }
         });
 });
 equal.addEventListener('click',()=>{
-    last=display.textContent.slice(first.length+1,display.textContent.length);
-    oper=display.textContent.slice(first.length,first.length+1);
     display.textContent=operate(first,last,oper);
     isClicked=!isClicked;
 });
