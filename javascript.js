@@ -20,3 +20,11 @@ const divide=document.getElementById('divide');
 const multiply=document.getElementById('multiply');
 
 const display=document.querySelector('.display');
+
+const buttons=document.querySelectorAll('.btn');
+buttons.forEach((e)=>{
+    e.addEventListener('click',()=>{
+        display.textContent += e.textContent;
+    });
+    
+});
