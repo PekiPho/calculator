@@ -22,6 +22,7 @@ const multiply=document.getElementById('multiply');
 const display=document.querySelector('.display');
 
 const buttons=document.querySelectorAll('.btn');
+const op=document.querySelectorAll('.op');
 buttons.forEach((e)=>{
     e.addEventListener('click',()=>{
         display.textContent += e.textContent;
@@ -33,4 +34,19 @@ back.addEventListener('click',()=>{
 
 clear.addEventListener('click',()=>{
     display.textContent="";
-})
+});
+
+var first;
+var last;
+var isClicked= true;
+op.forEach((e)=>{
+    
+        e.addEventListener('click',()=>{
+            if(isClicked)
+            {
+            display.textContent += e.textContent;
+            first=display.textContent.slice(0,-1);
+            isClicked=!isClicked;
+            }
+        });
+});
