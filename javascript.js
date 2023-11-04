@@ -54,12 +54,16 @@ function cl()
     first=undefined;
     last=undefined;
     oper=undefined;
+    pointIsClicked=true;
+    lastPointIsClicked=true;
 }
 
 var first;
 var last;
 var oper;
 var isClicked= true;
+var pointIsClicked= true;
+var lastPointIsClicked= true;
 
 function operate(a,b,operator)
 
@@ -109,6 +113,7 @@ op.forEach((e)=>{
                     display.textContent += e.textContent;
                     oper=display.textContent.slice(first.length,first.length+1);
                     last=undefined;
+                    lastPointIsClicked=true;
                 }
             }
         });
@@ -116,11 +121,25 @@ op.forEach((e)=>{
 equal.addEventListener('click',()=>{
     display.textContent=operate(first,last,oper);
     isClicked=!isClicked;
+    lastPointIsClicked=true;
     if(oper === '/' && last === '0')
         {
             alert(`Can't divide by zero`);
             cl();
         }
+});
+
+point.addEventListener('click',()=>{
+    if(pointIsClicked)
+    {
+        display.textContent+=point.textContent;
+        pointIsClicked=!pointIsClicked;
+    }
+    if(oper !== undefined && lastPointIsClicked)
+    {
+        display.textContent+=point.textContent;
+        lastPointIsClicked=!lastPointIsClicked;
+    }
 });
 
 //console.log(first,oper,last);
