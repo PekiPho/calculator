@@ -135,7 +135,7 @@ point.addEventListener('click',()=>{
         display.textContent+=point.textContent;
         pointIsClicked=!pointIsClicked;
     }
-    if(oper !== undefined && lastPointIsClicked)
+    else if(oper !== undefined && lastPointIsClicked)
     {
         display.textContent+=point.textContent;
         lastPointIsClicked=!lastPointIsClicked;
