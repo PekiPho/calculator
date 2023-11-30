@@ -26,6 +26,8 @@ const op=document.querySelectorAll('.op');
 buttons.forEach((e)=>{
     e.addEventListener('click',()=>{
         display.textContent += e.textContent;
+        if(oper === undefined)
+            first=display.textContent;
         if(oper !== undefined)
         {
             last=display.textContent.slice(first.length+1,display.textContent.length);
@@ -41,6 +43,10 @@ back.addEventListener('click',()=>{
         last=undefined;
         isClicked=true;
     }
+    if(oper !== undefined && !(t === '*' || t === '/' || t === '-' || t === '+'))
+        {
+            last=display.textContent.slice(first.length+1,display.textContent.length);
+        }
 });
 
 clear.addEventListener('click',()=>{
@@ -91,6 +97,10 @@ function round(num)
 op.forEach((e)=>{
     
         e.addEventListener('click',()=>{
+            if(first === undefined)
+            {
+                return;
+            }
             if(isClicked)
             {
             display.textContent += e.textContent;
@@ -130,16 +140,31 @@ equal.addEventListener('click',()=>{
 });
 
 point.addEventListener('click',()=>{
-    if(pointIsClicked)
+    // if(pointIsClicked)
+    // {
+    //     display.textContent+=point.textContent;
+    //     pointIsClicked=!pointIsClicked;
+    // }
+    // else if(oper !== undefined && lastPointIsClicked)
+    // {
+    //     display.textContent+=point.textContent;
+    //     lastPointIsClicked=!lastPointIsClicked;
+    // }
+    if(first.includes('.') && last === undefined)
+        return;
+    else if(oper !== undefined && last.includes('.'))
+        return;
+    else 
     {
         display.textContent+=point.textContent;
-        pointIsClicked=!pointIsClicked;
+        if(oper === undefined)
+            first=display.textContent;
+        if(oper !== undefined)
+        {
+            last=display.textContent.slice(first.length+1,display.textContent.length);
+        }
     }
-    else if(oper !== undefined && lastPointIsClicked)
-    {
-        display.textContent+=point.textContent;
-        lastPointIsClicked=!lastPointIsClicked;
-    }
+
 });
 
 //console.log(first,oper,last);
